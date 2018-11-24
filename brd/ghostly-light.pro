@@ -1,4 +1,4 @@
-update=sáb 24 nov 2018 17:53:48 CET
+update=sáb 24 nov 2018 18:50:02 CET
 version=1
 last_client=kicad
 [cvpcb]
@@ -44,16 +44,6 @@ LibName31=contrib
 LibName32=valves
 LibName33=lib/TPS61070
 LibName34=lib/WS2812B
-[schematic_editor]
-version=1
-PageLayoutDescrFile=sheet-akornsys-rdi.kicad_wks
-PlotDirectoryName=
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=
-SpiceForceRefPrefix=0
-SpiceUseNetNumbers=0
-LabSize=60
 [pcbnew]
 version=1
 PageLayoutDescrFile=sheet-akornsys-rdi.kicad_wks
@@ -73,3 +63,13 @@ SolderMaskMinWidth=0
 DrawSegmentWidth=0.2
 BoardOutlineThickness=0.15
 ModuleOutlineThickness=0.15
+[schematic_editor]
+version=1
+PageLayoutDescrFile=sheet-akornsys-rdi.kicad_wks
+PlotDirectoryName=out/
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60

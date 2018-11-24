@@ -3,7 +3,7 @@
   (general
     (links 34)
     (no_connects 1)
-    (area -0.075001 -0.075001 30.075001 30.075001)
+    (area -5.693227 -0.075001 30.075001 30.679201)
     (thickness 1.6)
     (drawings 14)
     (tracks 119)
@@ -13,6 +13,16 @@
   )
 
   (page A4)
+  (title_block
+    (title "Ghostly Light")
+    (date 2018-11-24)
+    (rev release-v0.1A)
+    (company https://github.com/akornsys-rdi/ghostly-light)
+    (comment 2 "Designed & drawn by: R. García")
+    (comment 3 "SN: k404AC00501a_4618")
+    (comment 4 "Copyright © 2018 kwendenarmo, released under GNU/GPL 3 License")
+  )
+
   (layers
     (0 F.Cu signal)
     (31 B.Cu signal)
