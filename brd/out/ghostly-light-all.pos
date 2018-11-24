@@ -1,0 +1,19 @@
+### Module positions - created on Sat Nov 24 16:24:11 2018 ###
+### Printed by Pcbnew version kicad 4.0.7-e2-6376~58~ubuntu16.04.1
+## Unit = mm, Angle = deg.
+## Side : All
+# Ref     Val       Package                             PosX       PosY       Rot  Side
+BT1       CR2032    Keystone_3034_1x20mm-CoinCell    15.0000   -15.0000   90.0000  bottom
+C1        22uF      C_0603_HandSoldering              4.8260   -10.0330  180.0000  top
+C2        22uF      C_0603_HandSoldering              9.1440   -14.8590  270.0000  top
+C3        1uF       C_0603_HandSoldering             13.4620   -11.3030    0.0000  top
+D1        WS2812B   LED_WS2812B-PLCC4                15.0000   -15.0000    0.0000  top
+L1        10uH      L_1007_Handsoldering              4.8260   -11.9380  180.0000  top
+R1        180k      R_0603_HandSoldering              4.8260   -19.3040    0.0000  top
+R2        1M62      R_0603_HandSoldering              7.6200   -14.8590  270.0000  top
+R3        180k      R_0603_HandSoldering              4.8260   -17.6530  180.0000  top
+R4        180k      R_0603_HandSoldering             15.1130    -1.9685  180.0000  top
+SW1       POWER ON  SW_SPDT_PCM12                    14.9860   -27.0510    0.0000  top
+U1        TPS61070  SOT-23-6                          4.8260   -14.9860    0.0000  top
+U2        ATTINY85  SOIJ-8_5.3x5.3mm_Pitch1.27mm     15.1130    -5.7150    0.0000  top
+## End

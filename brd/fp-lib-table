@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name akorn-logo)(type KiCad)(uri "$(KIPRJMOD)/lib/akorn-logo.pretty")(options "")(descr ""))
+  (lib (name inductor_1007)(type KiCad)(uri "$(KIPRJMOD)/lib/inductor_1007.pretty")(options "")(descr ""))
+)

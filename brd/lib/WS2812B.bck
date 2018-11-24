@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP WS2812B
+D Addresable LED RGB
+K led rgb diode addressable
+$ENDCMP
+#
+#End Doc Library

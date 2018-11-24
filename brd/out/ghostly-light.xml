@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/kwendenarmo/git-repos/remote/akornsys-rdi/ghostly-light/brd/ghostly-light.sch</source>
+    <date>sáb 24 nov 2018 18:38:03 CET</date>
+    <tool>Eeschema 4.0.7-e2-6376~58~ubuntu16.04.1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Ghostly Light</title>
+        <company>https://github.com/akornsys-rdi/ghostly-light</company>
+        <rev>release-v0.1A</rev>
+        <date>2018-11-24</date>
+        <source>ghostly-light.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value="Designed &amp; drawn by: R. García"/>
+        <comment number="3" value="SN: k404AC00501a_4618"/>
+        <comment number="4" value="Copyright © 2018 kwendenarmo, released under GNU/GPL 3 License"/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="BT1">
+      <value>CR2032</value>
+      <footprint>Battery_Holders:Keystone_3034_1x20mm-CoinCell</footprint>
+      <datasheet>lib/datasheets/3034.pdf</datasheet>
+      <fields>
+        <field name="Manufacturer">Keystone Electronics</field>
+        <field name="Manufacturer Part Number">3034</field>
+        <field name="Use w/">CR2032</field>
+      </fields>
+      <libsource lib="device" part="Battery_Cell"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEEE6C3</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>22uF</value>
+      <footprint>Capacitors_SMD:C_0603_HandSoldering</footprint>
+      <fields>
+        <field name="Manufacturer">Murata</field>
+        <field name="Manufacturer Part Number">GRM188R60J226MEA0D</field>
+      </fields>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEEE7C6</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>180k</value>
+      <footprint>Resistors_SMD:R_0603_HandSoldering</footprint>
+      <fields>
+        <field name="Manufacturer">Yageo</field>
+        <field name="Manufacturer Part Number">RC0603FR-07180KL</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEEE801</tstamp>
+    </comp>
+    <comp ref="L1">
+      <value>10uH</value>
+      <footprint>inductor_1007:L_1007_Handsoldering</footprint>
+      <datasheet>lib/datasheets/CBC2518T100K.pdf</datasheet>
+      <fields>
+        <field name="Manufacturer">Taiyo Yuden</field>
+        <field name="Manufacturer Part Number">CBC2518T100K</field>
+      </fields>
+      <libsource lib="device" part="L"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEEE822</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>1M62</value>
+      <footprint>Resistors_SMD:R_0603_HandSoldering</footprint>
+      <fields>
+        <field name="Manufacturer">Yageo</field>
+        <field name="Manufacturer Part Number">RC0603FR-071M62L</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEEE85F</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>ATTINY85</value>
+      <footprint>Housings_SOIC:SOIJ-8_5.3x5.3mm_Pitch1.27mm</footprint>
+      <datasheet>lib/datasheets/ATTINY85.pdf</datasheet>
+      <fields>
+        <field name="Manufacturer">Atmel</field>
+        <field name="Manufacturer Part Number">ATTINY85-20SU</field>
+      </fields>
+      <libsource lib="atmel" part="ATTINY85-20SU"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEEE92C</tstamp>
+    </comp>
+    <comp ref="SW1">
+      <value>POWER ON</value>
+      <footprint>Buttons_Switches_SMD:SW_SPDT_PCM12</footprint>
+      <datasheet>lib/datasheets/MSS3.pdf</datasheet>
+      <fields>
+        <field name="Manufacturer">Diptronics</field>
+        <field name="Manufacturer Part Number">MSS3-V-T/R</field>
+      </fields>
+      <libsource lib="switches" part="SW_SPDT"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEEE9E5</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>TPS61070</value>
+      <footprint>TO_SOT_Packages_SMD:SOT-23-6</footprint>
+      <datasheet>lib/datasheets/TPS61070.pdf</datasheet>
+      <fields>
+        <field name="Manufacturer">Texas Instruments</field>
+        <field name="Manufacturer Part Number">TPS61070DDCR</field>
+      </fields>
+      <libsource lib="TPS61070" part="TPS61070"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEEEBB0</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>22uF</value>
+      <footprint>Capacitors_SMD:C_0603_HandSoldering</footprint>
+      <fields>
+        <field name="Manufacturer">Murata</field>
+        <field name="Manufacturer Part Number">GRM188R60J226MEA0D</field>
+      </fields>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEEFD95</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>180k</value>
+      <footprint>Resistors_SMD:R_0603_HandSoldering</footprint>
+      <fields>
+        <field name="Manufacturer">Yageo</field>
+        <field name="Manufacturer Part Number">RC0603FR-07180KL</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEEFE9A</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>HEADER</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x08_Pitch2.54mm</footprint>
+      <fields>
+        <field name="Do Not Populate">Do Not Populate</field>
+      </fields>
+      <libsource lib="conn" part="Conn_01x08"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEF0D74</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>WS2812B</value>
+      <footprint>LEDs:LED_WS2812B-PLCC4</footprint>
+      <datasheet>lib/datasheets/WS2812B.pdf</datasheet>
+      <fields>
+        <field name="Manufacturer">Worldsemi</field>
+        <field name="Manufacturer Part Number">WS2812B</field>
+      </fields>
+      <libsource lib="WS2812B" part="WS2812B"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEF2BE5</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>1uF</value>
+      <footprint>Capacitors_SMD:C_0603_HandSoldering</footprint>
+      <fields>
+        <field name="Manufacturer">Wurth Electronics</field>
+        <field name="Manufacturer Part Number">885012106022</field>
+      </fields>
+      <libsource lib="device" part="C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEF2D66</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>180k</value>
+      <footprint>Resistors_SMD:R_0603_HandSoldering</footprint>
+      <fields>
+        <field name="Manufacturer">Yageo</field>
+        <field name="Manufacturer Part Number">RC0603FR-07180KL</field>
+      </fields>
+      <libsource lib="device" part="R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5BEF568A</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="atmel" part="ATTINY25-20SU">
+      <aliases>
+        <alias>ATTINY45-20SU</alias>
+        <alias>ATTINY85-20SU</alias>
+      </aliases>
+      <description>SO8 Wide, 2k Flash, 128B SRAM, 128B EEPROM, Debug Wire</description>
+      <docs>http://www.atmel.com/images/atmel-2586-avr-8-bit-microcontroller-attiny25-attiny45-attiny85_datasheet.pdf</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ATTINY25-20SU</field>
+        <field name="Footprint">Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="PB5(~RESET~/dW/ADC0/PCINT5)" type="BiDi"/>
+        <pin num="2" name="PB3(XTAL1/CLKI/~OC1B~/ADC3/PCINT3)" type="BiDi"/>
+        <pin num="3" name="PB4(XTAL2/CLKO/OC1B/ADC2/PCINT4)" type="BiDi"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="PB0(MOSI/DI/SDA/AIN0/OC0A/~OC1A~/AREF/PCINT0)" type="BiDi"/>
+        <pin num="6" name="PB1(MISO/DO/AIN1/OC0B/OC1A/PCINT1)" type="BiDi"/>
+        <pin num="7" name="PB2(SCK/USCK/SCL/T0/INT0/ADC1/PCINT2)" type="BiDi"/>
+        <pin num="8" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="Battery_Cell">
+      <description>single battery cell</description>
+      <fields>
+        <field name="Reference">BT</field>
+        <field name="Value">Battery_Cell</field>
+      </fields>
+      <pins>
+        <pin num="1" name="+" type="passive"/>
+        <pin num="2" name="-" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="C">
+      <description>Unpolarized capacitor</description>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="conn" part="Conn_01x08">
+      <description>Generic connector, single row, 01x08</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_??x*mm*</fp>
+        <fp>Connector*:*1x??x*mm*</fp>
+        <fp>Pin?Header?Straight?1X*</fp>
+        <fp>Pin?Header?Angled?1X*</fp>
+        <fp>Socket?Strip?Straight?1X*</fp>
+        <fp>Socket?Strip?Angled?1X*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x08</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+        <pin num="8" name="Pin_8" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="L">
+      <description>Inductor</description>
+      <footprints>
+        <fp>Choke_*</fp>
+        <fp>*Coil*</fp>
+        <fp>Inductor_*</fp>
+        <fp>L_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="device" part="R">
+      <description>Resistor</description>
+      <footprints>
+        <fp>R_*</fp>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="switches" part="SW_SPDT">
+      <description>Switch, single pole double throw</description>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_SPDT</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="B" type="passive"/>
+        <pin num="3" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="TPS61070" part="TPS61070">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TPS61070</field>
+      </fields>
+      <pins>
+        <pin num="1" name="SW" type="power_out"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="FB" type="passive"/>
+        <pin num="5" name="VOUT" type="power_out"/>
+        <pin num="6" name="VBAT" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="WS2812B" part="WS2812B">
+      <description>Addresable LED RGB</description>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">WS2812B</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VDD" type="power_in"/>
+        <pin num="2" name="DOUT" type="output"/>
+        <pin num="3" name="VSS" type="power_in"/>
+        <pin num="4" name="DIN" type="input"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="conn">
+      <uri>/usr/share/kicad/library/conn.lib</uri>
+    </library>
+    <library logical="WS2812B">
+      <uri>lib/WS2812B.lib</uri>
+    </library>
+    <library logical="atmel">
+      <uri>/usr/share/kicad/library/atmel.lib</uri>
+    </library>
+    <library logical="switches">
+      <uri>/usr/share/kicad/library/switches.lib</uri>
+    </library>
+    <library logical="TPS61070">
+      <uri>lib/TPS61070.lib</uri>
+    </library>
+    <library logical="device">
+      <uri>/usr/share/kicad/library/device.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+5V">
+      <node ref="U1" pin="5"/>
+      <node ref="J1" pin="2"/>
+      <node ref="D1" pin="1"/>
+      <node ref="R2" pin="1"/>
+      <node ref="U2" pin="8"/>
+      <node ref="C2" pin="1"/>
+      <node ref="C3" pin="1"/>
+      <node ref="R4" pin="1"/>
+    </net>
+    <net code="2" name="GND">
+      <node ref="U2" pin="4"/>
+      <node ref="R1" pin="2"/>
+      <node ref="C1" pin="2"/>
+      <node ref="U1" pin="2"/>
+      <node ref="BT1" pin="2"/>
+      <node ref="J1" pin="6"/>
+      <node ref="R3" pin="2"/>
+      <node ref="C2" pin="2"/>
+      <node ref="D1" pin="3"/>
+      <node ref="C3" pin="2"/>
+    </net>
+    <net code="3" name="MOSI">
+      <node ref="J1" pin="4"/>
+      <node ref="U2" pin="5"/>
+    </net>
+    <net code="4" name="MISO">
+      <node ref="U2" pin="6"/>
+      <node ref="J1" pin="1"/>
+    </net>
+    <net code="5" name="Net-(D1-Pad2)">
+      <node ref="D1" pin="2"/>
+    </net>
+    <net code="6" name="DAT">
+      <node ref="D1" pin="4"/>
+      <node ref="U2" pin="2"/>
+      <node ref="J1" pin="7"/>
+    </net>
+    <net code="7" name="AN">
+      <node ref="U2" pin="3"/>
+      <node ref="J1" pin="8"/>
+    </net>
+    <net code="8" name="~RESET">
+      <node ref="U2" pin="1"/>
+      <node ref="R4" pin="2"/>
+      <node ref="J1" pin="5"/>
+    </net>
+    <net code="9" name="SCK">
+      <node ref="J1" pin="3"/>
+      <node ref="U2" pin="7"/>
+    </net>
+    <net code="10" name="Net-(SW1-Pad3)">
+      <node ref="SW1" pin="3"/>
+    </net>
+    <net code="11" name="Net-(R1-Pad1)">
+      <node ref="R1" pin="1"/>
+      <node ref="U1" pin="3"/>
+      <node ref="SW1" pin="2"/>
+    </net>
+    <net code="12" name="Net-(R2-Pad2)">
+      <node ref="R3" pin="1"/>
+      <node ref="U1" pin="4"/>
+      <node ref="R2" pin="2"/>
+    </net>
+    <net code="13" name="Net-(L1-Pad2)">
+      <node ref="L1" pin="2"/>
+      <node ref="U1" pin="1"/>
+    </net>
+    <net code="14" name="Net-(BT1-Pad1)">
+      <node ref="SW1" pin="1"/>
+      <node ref="U1" pin="6"/>
+      <node ref="L1" pin="1"/>
+      <node ref="C1" pin="1"/>
+      <node ref="BT1" pin="1"/>
+    </net>
+  </nets>
+</export>
