@@ -56,14 +56,15 @@
 #define MIN_TURNS 12                    // Minimum number of character turns before one can be selected.
 #define MAX_TURNS 20                    // Maximum number of character turns, character selected randomly between `MIN_TURNS` and `MAX_TURNS`.
 #define CONFIRMATION_FLASHES 4          // Number of flashes the character makes when selected.
-#define FLASH_TIME 200                  // Confirmation flash duration, high and low time in milliseconds.
+#define FLASH_TIME 200                  // Confirmation flash duration, high and low time in milliseconds. Total flash time: (`FLASH_TIME` * 2) milliseconds.
 
 
 /*******************************************************************************
  *  A N I M A T I O N   C O N S T A N T S
  ******************************************************************************/
 // List of animations
-#define SOLID 0                         // Index of `SOLID` animation. First animation. Disabled during `EASTER_EGG` animation.
+#define NO_ANIMATION 255                // Index of no animation selected.
+#define SOLID 0                         // Index of `SOLID` animation. First animation.
 #define FADE 1                          // Index of `FADE` animation.
 #define FEAR 2                          // Index of `FEAR` animation.
 #define FAST_FADE 3                     // Index of `FAST_FADE` animation.
@@ -71,17 +72,18 @@
 #define ANIMATIONS (EASTER_EGG + 1)     // Total number of animations. It must be the value of `EASTER_EGG` + 1.
 // Ratio of animations
 #define SOLID_RATIO 85                  // Percentage ratio that the `SOLID` animation will be displayed.
-#define FADE_RATIO (SOLID_RATIO + 10)   // Percentage ratio that the `FADE` animation will be displayed. Value of the previous ratio plus this ratio.
-#define FEAR_RATIO (FADE_RATIO + 2)     // Percentage ratio that the `FEAR` animation will be displayed. Value of the previous ratio plus this ratio.
-#define FAST_FADE_RATIO 100             // Percentage ratio that the `FAST_FADE` animation will be displayed. Value of the previous ratio plus this ratio. The last animation has a ratio of 100.
-#define EASTER_EGG_PERIOD 600000UL      // The Easter egg can be run every `EASTER_EGG_PERIOD` in milliseconds, with the ratio of the animation with previous index.
+#define FADE_RATIO 10                   // Percentage ratio that the `FADE` animation will be displayed.
+#define FEAR_RATIO 2                    // Percentage ratio that the `FEAR` animation will be displayed.
+#define FAST_FADE_RATIO 3               // Percentage ratio that the `FAST_FADE` animation will be displayed. The sum of this and the previous ones must be 100.
+#define EASTER_EGG_RATIO 10             // Percentage ratio that the `EASTER_EGG` animation will be displayed. This value determines whether a normal animation or the `EASTER_EGG` is played.
+#define EASTER_EGG_PERIOD 600000UL      // The Easter egg can be run every `EASTER_EGG_PERIOD` in milliseconds.
 // Animation Variables
 #define SOLID_TIME 5000                 // Time in milliseconds that the `SOLID` animation is held.
 #define FADE_TIMES 3                    // Number of times the 'FADE' animation is played.
 #define FADE_SPEED 25                   // Time in milliseconds of each step of the 'FADE' animation. Total animation time: (`FADE_SPEED` * 25 * 2 * `FADE_TIMES`) milliseconds.
 #define FEAR_TIME 3750                  // Time in milliseconds of the first part of the animation. Total animation time: (`FEAR_TIME` + (`FEAR_FLASH` * 2 * `FEAR_FLASHES`)) milliseconds.
 #define FEAR_FLASHES 5                  // Number of times the character flashes before returning to normal.
-#define FEAR_FLASH 200                  // Duration of animation flashing, high and low time in milliseconds.
+#define FEAR_FLASH 200                  // Duration of animation flashing, high and low time in milliseconds. Total flash time: (`FEAR_FLASH` * 2) milliseconds.
 #define FAST_FADE_TIMES 3               // Number of times the 'FAST_FADE' animation is played.
 #define FAST_FADE_SPEED 10              // Time in milliseconds of each step of the 'FAST_FADE' animation. Total animation time: (`FAST_FADE_SPEED` * 25 * 2 * `FAST_FADE_TIMES`) milliseconds.
 #define EASTER_EGG_STEPS 15             // Number of steps of each transition of the `EASTER_EGG` animation.
@@ -162,10 +164,10 @@ void setup() {
 void loop() {
     static boolean char_selection_done = false;     // Selected character status, to make the character selection at the beginning.
     unsigned char char_random = 0;                  // Number of character turns to select a character.
-    static unsigned char selected_char = 0;         // Selected character.
+    static unsigned char selected_char = NONE;      // Selected character.
     unsigned int char_selection_time = 0;           // Pause time between character turns.
     unsigned char animation_random = 0;             // Random number for the selection of animation according to its probability ratio.
-    unsigned char animation = 0;                    // Selected animation.
+    unsigned char animation = NO_ANIMATION;         // Selected animation.
     static unsigned long t_easter_egg = 0;          // Time counter for the animation `EASTER_EGG`.
 
     // Only in the first run
@@ -193,14 +195,18 @@ void loop() {
         char_selection_done = true;
     }
     // Animations run continuously, first select an animation
-    animation_random = random(1, 101);
-    if (animation_random <= SOLID_RATIO) animation = SOLID;
-    else if (animation_random <= FADE_RATIO) animation = FADE;
-    else if (animation_random <= FEAR_RATIO) animation = FEAR;
-    else if (animation_random <= FAST_FADE_RATIO) animation = FAST_FADE;
-    if (millis() - t_easter_egg >= EASTER_EGG_PERIOD) { // when `EASTER_EGG_PERIOD` is reached, an animation other than `SOLID` is always shown.
+    animation = NO_ANIMATION;
+    if (millis() - t_easter_egg >= EASTER_EGG_PERIOD) { // When `EASTER_EGG_PERIOD` is reached, `EASTER_EGG` animation can be displayed, according to its ratio.
         t_easter_egg = millis();
-        animation++; // The `EASTER_EGG` animation can be displayed every time `EASTER_EGG_PERIOD` is reached, if the selected animation is the penultimate one.
+        animation_random = random(1, 101);
+        if (animation_random <= EASTER_EGG_RATIO) animation = EASTER_EGG;
+    }
+    if (animation == NO_ANIMATION) { // If the `EASTER_EGG` animation is not shown, another one is selected according to its ratio.
+        animation_random = random(1, (SOLID_RATIO + FADE_RATIO + FEAR_RATIO + FAST_FADE_RATIO + 1));
+        if (animation_random <= SOLID_RATIO) animation = SOLID;
+        else if (animation_random <= (SOLID_RATIO + FADE_RATIO)) animation = FADE;
+        else if (animation_random <= (SOLID_RATIO + FADE_RATIO + FEAR_RATIO)) animation = FEAR;
+        else if (animation_random <= (SOLID_RATIO + FADE_RATIO + FEAR_RATIO + FAST_FADE_RATIO)) animation = FAST_FADE;
     }
     // And then run it
     switch (animation) {
