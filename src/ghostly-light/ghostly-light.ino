@@ -27,116 +27,129 @@
 
 
 /*******************************************************************************
- * D E D I C A T I O N:
- * - This project was originally conceived as a gift to my friend Isi, and
- *   developed as a thank-you present.
+ *  D E D I C A T I O N:
+ *  - This project was originally conceived as a gift to my friend Isi, and
+ *    developed as a thank-you present.
  *   
- *   Still, you're free to reuse this project for whatever you want, even if
- *   it's as shabby as decorative lights or as a gift to other people, knowing
- *   they'll never be as cool as my good friend. If you are only going to use
- *   the hardware of this project as a development environment for your own
- *   applications, make sure they are inclusive and creative. Do it for my
- *   friend. Thank you and happy hacking. -
+ *    Still, you're free to reuse this project for whatever you want, even if
+ *    it's as shabby as decorative lights or as a gift to other people, knowing
+ *    they'll never be as cool as my good friend. If you are only going to use
+ *    the hardware of this project as a development environment for your own
+ *    applications, make sure they are inclusive and creative. Do it for my
+ *    friend. Thank you and happy hacking. -
+ ******************************************************************************/
+
+
+/*******************************************************************************
+ *  B O A R D   &   F U S E S   C O N F I G U R A T I O N
+ *  - MCU: ATtiny85
+ *  - Board: Digispark (16MHz - No USB)
+ *  - Fuses: Low fuse 0xE1; High fuse 0xDD; Extended fuse 0xFE
+ *  - First run cli: `avrdude -pattiny85 -Pusb -catmelice_isp -Ulfuse:w:0xE1:m   -Uhfuse:w:0xDD:m   -Uefuse:w:0xFE:m`
  ******************************************************************************/
 
 
 /*******************************************************************************
  *  G P I O   C O N S T A N T S
  ******************************************************************************/
-#define DAT 3                           // DAT on GPIO 3 (physical pin 2), output to WS2812B LED.
-#define AN A2                           // AN on GPIO 4 (physical pin 3), used for random seed.
+#define DAT                     3                   // DAT on GPIO 3 (physical pin 2), output to WS2812B LED.
+#define AN                      A2                  // AN on GPIO 4 (physical pin 3), used for random seed.
 // Other pins are unused.
 
 
 /*******************************************************************************
  *  C H A R A C T E R   S E L E C T I O N   C O N S T A N T S
  ******************************************************************************/
-#define MIN_TIME 200                    // Time during which the first character is selected during character turn.
-#define STEP_TIME 90                    // Time to be added to each character in the turn, added to the previous one.
-#define MIN_TURNS 12                    // Minimum number of character turns before one can be selected.
-#define MAX_TURNS 20                    // Maximum number of character turns, character selected randomly between `MIN_TURNS` and `MAX_TURNS`.
-#define CONFIRMATION_FLASHES 4          // Number of flashes the character makes when selected.
-#define FLASH_TIME 200                  // Confirmation flash duration, high and low time in milliseconds. Total flash time: (`FLASH_TIME` * 2) milliseconds.
+#define MIN_TIME                200                 // Time during which the first character is selected during character turn.
+#define STEP_TIME               90                  // Time to be added to each character in the turn, added to the previous one.
+#define MIN_TURNS               12                  // Minimum number of character turns before one can be selected.
+#define MAX_TURNS               20                  // Maximum number of character turns, character selected randomly between `MIN_TURNS` and `MAX_TURNS`.
+#define CONFIRMATION_FLASHES    4                   // Number of flashes the character makes when selected.
+#define FLASH_TIME              200                 // Confirmation flash duration, high and low time in milliseconds. Total flash time: (`FLASH_TIME` * 2) milliseconds.
 
 
 /*******************************************************************************
  *  A N I M A T I O N   C O N S T A N T S
  ******************************************************************************/
 // List of animations
-#define NO_ANIMATION 255                // Index of no animation selected.
-#define SOLID 0                         // Index of `SOLID` animation. First animation.
-#define FADE 1                          // Index of `FADE` animation.
-#define FEAR 2                          // Index of `FEAR` animation.
-#define FAST_FADE 3                     // Index of `FAST_FADE` animation.
-#define EASTER_EGG 4                    // Index of `EASTER_EGG` animation. Other animations must always go before this animation.
-#define ANIMATIONS (EASTER_EGG + 1)     // Total number of animations. It must be the value of `EASTER_EGG` + 1.
+#define NO_ANIMATION            255                 // Index of no animation selected.
+#define SOLID                   0                   // Index of `SOLID` animation. First animation.
+#define FADE                    1                   // Index of `FADE` animation.
+#define FEAR                    2                   // Index of `FEAR` animation.
+#define FAST_FADE               3                   // Index of `FAST_FADE` animation.
+#define DISAPPEAR               4                   // Index of `DISAPPEAR` animation.
+#define EASTER_EGG              5                   // Index of `EASTER_EGG` animation. Other animations must always go before this animation.
+#define ANIMATIONS              (EASTER_EGG + 1)    // Total number of animations. It must be the value of `EASTER_EGG` + 1.
 // Ratio of animations
-#define SOLID_RATIO 85                  // Percentage ratio that the `SOLID` animation will be displayed.
-#define FADE_RATIO 10                   // Percentage ratio that the `FADE` animation will be displayed.
-#define FEAR_RATIO 2                    // Percentage ratio that the `FEAR` animation will be displayed.
-#define FAST_FADE_RATIO 3               // Percentage ratio that the `FAST_FADE` animation will be displayed. The sum of this and the previous ones must be 100.
-#define EASTER_EGG_RATIO 10             // Percentage ratio that the `EASTER_EGG` animation will be displayed. This value determines whether a normal animation or the `EASTER_EGG` is played.
-#define EASTER_EGG_PERIOD 600000UL      // The Easter egg can be run every `EASTER_EGG_PERIOD` in milliseconds.
+#define SOLID_RATIO             88                  // Percentage ratio that the `SOLID` animation will be displayed.
+#define FADE_RATIO              5                   // Percentage ratio that the `FADE` animation will be displayed.
+#define FEAR_RATIO              2                   // Percentage ratio that the `FEAR` animation will be displayed.
+#define FAST_FADE_RATIO         3                   // Percentage ratio that the `FAST_FADE` animation will be displayed.
+#define DISAPPEAR_RATIO         2                   // Percentage ratio that the `DISAPPEAR` animation will be displayed. The sum of this and the previous ones must be 100.
+#define EASTER_EGG_RATIO        5                   // Percentage ratio that the `EASTER_EGG` animation will be displayed. This value determines whether a normal animation or the `EASTER_EGG` is played.
+#define EASTER_EGG_PERIOD       600000UL            // The Easter egg can be run every `EASTER_EGG_PERIOD` in milliseconds.
 // Animation Variables
-#define SOLID_TIME 5000                 // Time in milliseconds that the `SOLID` animation is held.
-#define FADE_TIMES 3                    // Number of times the 'FADE' animation is played.
-#define FADE_SPEED 25                   // Time in milliseconds of each step of the 'FADE' animation. Total animation time: (`FADE_SPEED` * 25 * 2 * `FADE_TIMES`) milliseconds.
-#define FEAR_TIME 3750                  // Time in milliseconds of the first part of the animation. Total animation time: (`FEAR_TIME` + (`FEAR_FLASH` * 2 * `FEAR_FLASHES`)) milliseconds.
-#define FEAR_FLASHES 5                  // Number of times the character flashes before returning to normal.
-#define FEAR_FLASH 200                  // Duration of animation flashing, high and low time in milliseconds. Total flash time: (`FEAR_FLASH` * 2) milliseconds.
-#define FAST_FADE_TIMES 3               // Number of times the 'FAST_FADE' animation is played.
-#define FAST_FADE_SPEED 10              // Time in milliseconds of each step of the 'FAST_FADE' animation. Total animation time: (`FAST_FADE_SPEED` * 25 * 2 * `FAST_FADE_TIMES`) milliseconds.
-#define EASTER_EGG_STEPS 15             // Number of steps of each transition of the `EASTER_EGG` animation.
-#define EASTER_EGG_STOP 50              // Pause time between transitions of the `EASTER_EGG` animation.
-#define EASTER_EGG_SPEED 10             // Time in milliseconds of each step of the 'EASTER_EGG' animation. Total animation time: ((`EASTER_EGG_SPEED` * EASTER_EGG_STEPS * 13) + (`EASTER_EGG_STOP` * 10)) milliseconds.
+#define SOLID_TIME              5000                // Time in milliseconds that the `SOLID` animation is held.
+#define FADE_TIMES              3                   // Number of times the 'FADE' animation is played.
+#define FADE_SPEED              25                  // Time in milliseconds of each step of the 'FADE' animation. Total animation time: (`FADE_SPEED` * 25 * 2 * `FADE_TIMES`) milliseconds.
+#define FEAR_TIME               3750                // Time in milliseconds of the first part of the animation. Total animation time: (`FEAR_TIME` + (`FEAR_FLASH` * 2 * `FEAR_FLASHES`)) milliseconds.
+#define FEAR_FLASHES            5                   // Number of times the character flashes before returning to normal.
+#define FEAR_FLASH              200                 // Duration of animation flashing, high and low time in milliseconds. Total flash time: (`FEAR_FLASH` * 2) milliseconds.
+#define FAST_FADE_TIMES         3                   // Number of times the 'FAST_FADE' animation is played.
+#define FAST_FADE_SPEED         10                  // Time in milliseconds of each step of the 'FAST_FADE' animation. Total animation time: (`FAST_FADE_SPEED` * 25 * 2 * `FAST_FADE_TIMES`) milliseconds.
+#define DISAPPEAR_SPEED         300                 // Time in milliseconds of each step of the 'DISAPPEAR' animation. Total animation time: ((`DISAPPEAR_SPEED` * 100) + `DISAPPEAR_TIME`) milliseconds.
+#define DISAPPEAR_TIME          750                 // Time in milliseconds that the character is disappeared before reappearing.
+#define EASTER_EGG_STEPS        15                  // Number of steps of each transition of the `EASTER_EGG` animation.
+#define EASTER_EGG_STOP         50                  // Pause time between transitions of the `EASTER_EGG` animation.
+#define EASTER_EGG_SPEED        10                  // Time in milliseconds of each step of the 'EASTER_EGG' animation. Total animation time: ((`EASTER_EGG_SPEED` * EASTER_EGG_STEPS * 13) + (`EASTER_EGG_STOP` * 10)) milliseconds.
 
 
 /*******************************************************************************
  *  C H A R A C T E R   C O N S T A N T S
  ******************************************************************************/
 // Indexes of `characters[][3]`
-#define BLINKY 0                        // Index for `BLINKY` character.
-#define CLYDE 1                         // Index for `CLYDE` character.
-#define PINKY 2                         // Index for `PINKY` character.
-#define INKY 3                          // Index for `INKY` character.
-#define CHARACTERS (INKY + 1)           // Total number of characters. It must be the value of `INKY` + 1.
-#define FEAR_BLUE 4                     // Index for the first part of the animation `FEAR`.
-#define FEAR_WHITE 5                    // Index for the second part of the animation `FEAR`.
-#define NONE 6                          // Index for no selected character (`NONE`).
+#define BLINKY                  0                   // Index for `BLINKY` character.
+#define PINKY                   1                   // Index for `PINKY` character.
+#define INKY                    2                   // Index for `INKY` character.
+#define CLYDE                   3                   // Index for `CLYDE` character.
+#define CHARACTERS              (CLYDE + 1)         // Total number of characters. It must be the value of `CLYDE` + 1.
+#define FEAR_BLUE               4                   // Index for the first part of the animation `FEAR`.
+#define FEAR_WHITE              5                   // Index for the second part of the animation `FEAR`.
+#define NONE                    6                   // Index for no selected character (`NONE`).
 // Colors
-#define BLINKY_COLOR {127, 0, 0}        // RGB color array for the character `BLINKY`.
-#define CLYDE_COLOR {127, 48, 0}        // RGB color array for the character `CLYDE`.
-#define PINKY_COLOR {96, 24, 56}        // RGB color array for the character `PINKY`.
-#define INKY_COLOR {0, 96, 56}          // RGB color array for the character `INKY`.
-#define FEAR_BLUE_COLOR {0, 0, 127}     // RGB color array for the first part of the animation `FEAR`.
-#define FEAR_WHITE_COLOR {72, 72, 72}   // RGB color array for the second part of the animation  `FEAR`.
-#define NONE_COLOR {0, 0, 0}            // RGB color array for no character selected (`NONE`). True black.
+#define BLINKY_COLOR            {127, 0, 0}         // RGB color array for the character `BLINKY`.
+#define PINKY_COLOR             {96, 24, 56}        // RGB color array for the character `PINKY`.
+#define INKY_COLOR              {0, 96, 56}         // RGB color array for the character `INKY`.
+#define CLYDE_COLOR             {127, 48, 0}        // RGB color array for the character `CLYDE`.
+#define FEAR_BLUE_COLOR         {0, 0, 127}         // RGB color array for the first part of the animation `FEAR`.
+#define FEAR_WHITE_COLOR        {72, 72, 72}        // RGB color array for the second part of the animation  `FEAR`.
+#define NONE_COLOR              {0, 0, 0}           // RGB color array for no character selected (`NONE`). True black.
 
 
 /*******************************************************************************
  *  E A S T E R   E G G   C O N S T A N T S
  *  - G S R D I   F L A G   C O L O R S -
  ******************************************************************************/
-#define FLAGS 5                         // Total number of flags.
+#define FLAGS                   5                   // Total number of flags.
 // Colors
-#define BLACK_COLOR {4, 4, 4}           // RGB color array for `BLACK_COLOR`.
-#define GREY_COLOR {32, 32, 32}         // RGB color array for `GREY_COLOR`.
-#define WHITE_COLOR {96, 96, 96}        // RGB color array for `WHITE_COLOR`.
-#define BROWN_COLOR {64, 35, 7}         // RGB color array for `BROWN_COLOR`.
-#define RED_COLOR {96, 0, 0}            // RGB color array for `RED_COLOR`.
-#define PINK_COLOR {127, 40, 70}        // RGB color array for `PINK_COLOR`.
-#define ORANGE_COLOR {127, 44, 0}       // RGB color array for `ORANGE_COLOR`.
-#define YELLOW_COLOR {127, 96, 0}       // RGB color array for `YELLOW_COLOR`.
-#define GREEN_COLOR {0, 96, 0}          // RGB color array for `GREEN_COLOR`.
-#define CYAN_COLOR {0, 112, 112}        // RGB color array for `CYAN_COLOR`.
-#define BLUE_COLOR {0, 12, 127}         // RGB color array for `BLUE_COLOR`.
-#define PURPLE_COLOR {74, 0, 96}        // RGB color array for `PURPLE_COLOR`.
+#define BLACK_COLOR             {4, 4, 4}           // RGB color array for `BLACK_COLOR`.
+#define GREY_COLOR              {32, 32, 32}        // RGB color array for `GREY_COLOR`.
+#define WHITE_COLOR             {96, 96, 96}        // RGB color array for `WHITE_COLOR`.
+#define BROWN_COLOR             {64, 35, 7}         // RGB color array for `BROWN_COLOR`.
+#define RED_COLOR               {96, 0, 0}          // RGB color array for `RED_COLOR`.
+#define PINK_COLOR              {127, 40, 70}       // RGB color array for `PINK_COLOR`.
+#define ORANGE_COLOR            {127, 44, 0}        // RGB color array for `ORANGE_COLOR`.
+#define YELLOW_COLOR            {127, 96, 0}        // RGB color array for `YELLOW_COLOR`.
+#define GREEN_COLOR             {0, 96, 0}          // RGB color array for `GREEN_COLOR`.
+#define CYAN_COLOR              {0, 112, 112}       // RGB color array for `CYAN_COLOR`.
+#define BLUE_COLOR              {0, 12, 127}        // RGB color array for `BLUE_COLOR`.
+#define PURPLE_COLOR            {74, 0, 96}         // RGB color array for `PURPLE_COLOR`.
 // Definition of flags, 10 colors per flag.
-#define RAINBOW_FLAG { BLACK_COLOR, BROWN_COLOR, PINK_COLOR, RED_COLOR, ORANGE_COLOR, YELLOW_COLOR, GREEN_COLOR, CYAN_COLOR, BLUE_COLOR, PURPLE_COLOR }
-#define TRANS_FLAG { CYAN_COLOR, CYAN_COLOR, PINK_COLOR, PINK_COLOR, WHITE_COLOR, WHITE_COLOR, PINK_COLOR, PINK_COLOR, CYAN_COLOR, CYAN_COLOR }
-#define PAN_FLAG { PINK_COLOR, PINK_COLOR, PINK_COLOR, YELLOW_COLOR, YELLOW_COLOR, YELLOW_COLOR, YELLOW_COLOR, CYAN_COLOR, CYAN_COLOR, CYAN_COLOR }
-#define ACE_FLAG { BLACK_COLOR, BLACK_COLOR, GREY_COLOR, GREY_COLOR, GREY_COLOR, WHITE_COLOR, WHITE_COLOR, WHITE_COLOR, PURPLE_COLOR, PURPLE_COLOR }
-#define NB_FLAG { YELLOW_COLOR, YELLOW_COLOR, WHITE_COLOR, WHITE_COLOR, WHITE_COLOR, PURPLE_COLOR, PURPLE_COLOR, PURPLE_COLOR, BLACK_COLOR, BLACK_COLOR }
+#define RAINBOW_FLAG    { BLACK_COLOR, BROWN_COLOR, PINK_COLOR, RED_COLOR, ORANGE_COLOR, YELLOW_COLOR, GREEN_COLOR, CYAN_COLOR, BLUE_COLOR, PURPLE_COLOR }
+#define TRANS_FLAG      { CYAN_COLOR, CYAN_COLOR, PINK_COLOR, PINK_COLOR, WHITE_COLOR, WHITE_COLOR, PINK_COLOR, PINK_COLOR, CYAN_COLOR, CYAN_COLOR }
+#define PAN_FLAG        { PINK_COLOR, PINK_COLOR, PINK_COLOR, YELLOW_COLOR, YELLOW_COLOR, YELLOW_COLOR, YELLOW_COLOR, CYAN_COLOR, CYAN_COLOR, CYAN_COLOR }
+#define ACE_FLAG        { BLACK_COLOR, BLACK_COLOR, GREY_COLOR, GREY_COLOR, GREY_COLOR, WHITE_COLOR, WHITE_COLOR, WHITE_COLOR, PURPLE_COLOR, PURPLE_COLOR }
+#define NB_FLAG         { YELLOW_COLOR, YELLOW_COLOR, WHITE_COLOR, WHITE_COLOR, WHITE_COLOR, PURPLE_COLOR, PURPLE_COLOR, PURPLE_COLOR, BLACK_COLOR, BLACK_COLOR }
 
 
 /*******************************************************************************
@@ -149,7 +162,7 @@ Adafruit_NeoPixel ws2812 = Adafruit_NeoPixel(1, DAT, NEO_GRB + NEO_KHZ800);
 /*******************************************************************************
  *  G L O B A L   A R R A Y S
  ******************************************************************************/
-const unsigned char characters[][3] = { BLINKY_COLOR, CLYDE_COLOR, PINKY_COLOR, INKY_COLOR, FEAR_BLUE_COLOR, FEAR_WHITE_COLOR, NONE_COLOR };
+const unsigned char characters[][3] = { BLINKY_COLOR, PINKY_COLOR, INKY_COLOR, CLYDE_COLOR, FEAR_BLUE_COLOR, FEAR_WHITE_COLOR, NONE_COLOR };
 const unsigned char flags[FLAGS][10][3] = { RAINBOW_FLAG, TRANS_FLAG, PAN_FLAG, ACE_FLAG, NB_FLAG }; // If you use this to add non-inclusive symbology or against individual freedoms, the microcontroller will catch fire when unsupervised, and burn all your precious belongings, and also your soul.
 
 
@@ -202,11 +215,12 @@ void loop() {
         if (animation_random <= EASTER_EGG_RATIO) animation = EASTER_EGG;
     }
     if (animation == NO_ANIMATION) { // If the `EASTER_EGG` animation is not shown, another one is selected according to its ratio.
-        animation_random = random(1, (SOLID_RATIO + FADE_RATIO + FEAR_RATIO + FAST_FADE_RATIO + 1));
+        animation_random = random(1, (SOLID_RATIO + FADE_RATIO + FEAR_RATIO + FAST_FADE_RATIO + DISAPPEAR_RATIO + 1));
         if (animation_random <= SOLID_RATIO) animation = SOLID;
         else if (animation_random <= (SOLID_RATIO + FADE_RATIO)) animation = FADE;
         else if (animation_random <= (SOLID_RATIO + FADE_RATIO + FEAR_RATIO)) animation = FEAR;
         else if (animation_random <= (SOLID_RATIO + FADE_RATIO + FEAR_RATIO + FAST_FADE_RATIO)) animation = FAST_FADE;
+        else if (animation_random <= (SOLID_RATIO + FADE_RATIO + FEAR_RATIO + FAST_FADE_RATIO + DISAPPEAR_RATIO)) animation = DISAPPEAR;
     }
     // And then run it
     switch (animation) {
@@ -230,6 +244,9 @@ void loop() {
             fade_color(characters[selected_char][0], characters[selected_char][1], characters[selected_char][2], (characters[selected_char][0] / 2), (characters[selected_char][1] / 2), (characters[selected_char][2] / 2), 25, FAST_FADE_SPEED);
             fade_color((characters[selected_char][0] / 2), (characters[selected_char][1] / 2), (characters[selected_char][2] / 2), characters[selected_char][0], characters[selected_char][1], characters[selected_char][2], 25, FAST_FADE_SPEED);
         }
+        break;
+      case DISAPPEAR:
+        disappear(selected_char);
         break;
       // Insert new animations here
       case EASTER_EGG:
@@ -292,6 +309,17 @@ void fear(unsigned char character) {
         ws2812.show();
         delay(FEAR_FLASH);
     }
+    ws2812.setPixelColor(0, ws2812.Color(characters[character][0], characters[character][1], characters[character][2]));
+    ws2812.show();
+}
+
+
+// Disappears very slowly and then reappears
+// Required arguments:
+//      Index of the selected character.
+void disappear(unsigned char character) {
+    fade_color(characters[character][0], characters[character][1], characters[character][2], characters[NONE][0], characters[NONE][1], characters[NONE][2], 100, DISAPPEAR_SPEED);
+    delay(DISAPPEAR_TIME);
     ws2812.setPixelColor(0, ws2812.Color(characters[character][0], characters[character][1], characters[character][2]));
     ws2812.show();
 }
