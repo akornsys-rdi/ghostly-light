@@ -8,7 +8,7 @@ When the toy is turned on, it will randomly choose one of the four pacman ghosts
 
 ## Dedication:
 
-> This project was originally conceived as a gift to my friend Isi, and developed as a thank-you present.
+> This project was originally conceived as a gift to my friend Isi, and developed as a thank-you present.  
 > Still, you're free to reuse this project for whatever you want, even if it's as shabby as decorative lights or as a gift to other people, knowing they'll never be as cool as my good friend. If you are only going to use the hardware of this project as a development environment for your own applications, make sure they are inclusive and creative. Do it for my friend. Thank you and happy hacking.
 
 ## 3D Printing
@@ -37,7 +37,7 @@ The manufacturing files are located in the `out` folder:
 - BoM & CPL: `ghostly-light.xls`
 - Gerbers files: `ghostly-light.zip`
 
-The board is also intended as a development environment for ATtiny85 with a reduced form factor and coin cell powered. All microcontroller pins are exposed at the header. The board can be powered externally via the header, as long as the switch is in the off position, without damaging the regulator (see https://e2e.ti.com/support/power-management/f/196/p/198340/707580#707580).
+The board is also intended as a development environment for ATtiny85 with a reduced form factor and coin cell powered. All microcontroller pins are exposed at the header. The board can be powered externally via the header, as long as the switch is in the off position, without damaging the regulator (see [this post from Texas instruments technical forum](https://e2e.ti.com/support/power-management/f/196/p/198340/707580#707580)).
 
 ## Firmware
 
