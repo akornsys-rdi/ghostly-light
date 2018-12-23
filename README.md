@@ -2,7 +2,7 @@
 
 Ghostly light is a small toy project powered by a coin cell, which is inspired by the ghosts of the classic pacman game.
 This small toy consists of a plastic shell designed to be 3d-printed, a specific hardware, and a software that generates the different effects.
-The plastic shell has the shape of a pacman ghost. It consists of two parts, which allows you to remove the PCB and change the battery. It''s recommended to print in translucent neutral color to get a better finish.
+The plastic shell has the shape of a pacman ghost. It consists of two parts, which allows you to remove the PCB and change the battery. It's recommended to print in translucent neutral color to get a better finish.
 The hardware consists of a low power step-up, an ATtiny85 microcontroller and an WS2812B addressable LED. All the pins of the microcontroller are exposed in a header, which makes this PCB also ideal as a development environment for this microcontroller.
 When the toy is turned on, it will randomly choose one of the four pacman ghosts. Once (automatically) selected, it will show different animations over time, which are also randomized. The toy does not require any type of interaction with the user, being ideal as a decorative element.
 
@@ -10,6 +10,45 @@ When the toy is turned on, it will randomly choose one of the four pacman ghosts
 
 > This project was originally conceived as a gift to my friend Isi, and developed as a thank-you present.
 > Still, you're free to reuse this project for whatever you want, even if it's as shabby as decorative lights or as a gift to other people, knowing they'll never be as cool as my good friend. If you are only going to use the hardware of this project as a development environment for your own applications, make sure they are inclusive and creative. Do it for my friend. Thank you and happy hacking.
+
+## 3D Printing
+
+For the printing of the plastic shell, it is recommended to use transparent or translucent filament of neutral color. I have used transparent PLA. After some tests, I have achieved the best finish with a maximum layer height of 0.2mm, non-linear infill pattern, such as Slic3r-PE "_Archimedean Chords_" and random seams.
+
+The transparent filament often gives first layer adhesion issues, and since the shell has few contact points on the bed, print may fail. For this reason, I have tried to find the parameters that have worked for me to achieve first layer adhesion and be able to print the shell:
+
+- Bed temperature, 70ºC first layer, 65ºC other layers.
+- Two first layers without layer fan.
+- First layer speed at 35%.
+- Reduce speed to 75% manually to a height of approximately 10mm, restore to 100% after this height.
+- 120% extrusion width (flow) in first layer.
+- Lower the Z-offset 50µm (**carefully modify not to block the flow of the nozzle or damage the bed!**).
+
+Even so, if the problems persist, I have also generated a plastic shell file `ghost-aid.stl` with a perimeter ring, which should give much less adhesion issues. In return, you have to cut the surplus once printed.
+
+You only need to print a copy of the `ghost.stl` and `ghost-cover.stl` files.
+
+## Electronic design
+
+The electronic design has been made in KiCad EDA, providing a small step-up regulator with on-off switch, power from a coin cell, an ATtiny85 microcontroller with a large breakout header, and a WS2812b addressable LED.
+
+The manufacturing files are located in the `out` folder:
+
+- BoM & CPL: `ghostly-light.xls`
+- Gerbers files: `ghostly-light.zip`
+
+The board is also intended as a development environment for ATtiny85 with a reduced form factor and coin cell powered. All microcontroller pins are exposed at the header. The board can be powered externally via the header, as long as the switch is in the off position, without damaging the regulator (see https://e2e.ti.com/support/power-management/f/196/p/198340/707580#707580).
+
+## Firmware
+
+The code has been made in C for Arduino, for a Digistump board, since it has better support and compilation optimization than other packages with support for the ATtiny85 microcontroller. All the code is extensively commented and documented. Also attached is the compiled binary file.
+
+The compilation has been done with the following software version:
+
+- Arduino IDE 1.8.4-linux64
+- Compiler: avr-gcc 4.8.1-arduino5
+- Library: Adafruit_NeoPixel 1.1.7
+- Board package: Digistump AVR Boards 1.6.7
 
 ## License
 
