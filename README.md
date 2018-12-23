@@ -26,7 +26,7 @@ The transparent filament often gives first layer adhesion issues, and since the 
 
 Even so, if the problems persist, I have also generated a plastic shell file `ghost-aid.stl` with a perimeter ring, which should give much less adhesion issues. In return, you have to cut the surplus once printed.
 
-You only need to print a copy of the `ghost.stl` and `ghost-cover.stl` files.
+You only need to print a copy of the `ghost.stl` and `ghost-cover.stl` files. No support structure is required for any of the files.
 
 ## Electronic design
 
@@ -39,6 +39,8 @@ The manufacturing files are located in the `out` folder:
 
 The board is also intended as a development environment for ATtiny85 with a reduced form factor and coin cell powered. All microcontroller pins are exposed at the header. The board can be powered externally via the header, as long as the switch is in the off position, without damaging the regulator (see [this post from Texas instruments technical forum](https://e2e.ti.com/support/power-management/f/196/p/198340/707580#707580)).
 
+**NOTE:** No battery life calculation or load adequacy has been performed for this battery. The circuit consumes an average of 40-50 mA.
+
 ## Firmware
 
 The code has been made in C for Arduino, for a Digistump board, since it has better support and compilation optimization than other packages with support for the ATtiny85 microcontroller. All the code is extensively commented and documented. Also attached is the compiled binary file.
@@ -49,6 +51,17 @@ The compilation has been done with the following software version:
 - Compiler: avr-gcc 4.8.1-arduino5
 - Library: Adafruit_NeoPixel 1.1.7
 - Board package: Digistump AVR Boards 1.6.7
+
+## Assembly
+
+- Carry out the assembly of the board with all its components. It is recommended to first assemble all of the top side, then the battery holder and finally the header. Three or four unassembled PCB can be used to hold the pins in position while soldering.
+- Using the header, and with external power, first burn the fuses of the microcontroller and then upload the program. It should start working. An AVR programmer is required.
+- Remove all cables from the header and insert a coin cell. **Make sure that the battery has correctly inserted into its position and with the correct polarity.** When you turn on the board with the switch it should start to work. Switch off.
+- Place the PCB over the printed cover. Only fit in one position, with the battery on the underside and the header on the corresponding side.
+- Place the shell on top. The hole for the switch on the rear side must be aligned with the switch on the PCB. It may be necessary to remove any unwanted burrs and reliefs from the inside of the shell.
+- Lower the shell until it almost closes. Press the shell down until it clicks into place.
+
+To remove the PCB, use a thin element to lever out the cover on each of the legs of the shell.
 
 ## License
 
