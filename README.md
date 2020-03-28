@@ -1,4 +1,6 @@
-# Ghostly Light
+# Ghostly Light V1 "Isi"
+
+#### NOTE: GHOSTLY LIGHT V1 is not recommended for use. There is nothing wrong with this design, but due to the short battery life and its current requirements, its use as a toy or desk decoration is severely restricted. The current consumption can reach 200mA below 2V, which for this type of batteries is out of specification.
 
 Ghostly light is a small toy project powered by a coin cell, which is inspired by the ghosts of the classic pacman game.  
 This small toy consists of a plastic shell designed to be 3d-printed, a specific hardware, and a software that generates the different effects.  
@@ -24,13 +26,19 @@ The transparent filament often gives first layer adhesion issues, and since the 
 - 120% extrusion width (flow) in first layer.
 - Lower the Z-offset 50µm (**carefully modify not to block the flow of the nozzle or damage the bed!**).
 
-Even so, if the problems persist, I have also generated a plastic shell file `ghost-aid.stl` with a perimeter ring, which should give much less adhesion issues. In return, you have to cut the surplus once printed.
+Even so, if the problems persist, I have also generated a plastic shell file `ghost-aid.stl` with a perimeter ring, which should give much less adhesion issues. In return, you have to cut the surplus once printed. Alternatively, you can add as much brim as you like.
 
 You only need to print a copy of the `ghost.stl` and `ghost-cover.stl` files. No support structure is required for any of the files.
 
 ## Electronic design
 
 The electronic design has been made in KiCad EDA, providing a small step-up regulator with on-off switch, power from a coin cell, an ATtiny85 microcontroller with a large breakout header, and a WS2812b addressable LED.
+
+The power supply unit, starting with a button battery (BT1), goes through a step-up in order to provide 5V during the whole range of battery discharge, down to 0.9V. This step-up is based on the TPS61070 (U1) and requires very few component count, a small footprint and high efficiency. Its peripheral components are limited to a bulk capacitor at the input (C1) and at the output (C2), a voltage divider for output feedback (R2 and R3), the coil (L1) and a pull-down resistor (R1) for step-up enable, which is used to turn the system on or off by the switch (SW1), remaining disabled and in low power state when it's off.
+
+The control is performed by an ATtiny85 (U2) microcontroller, with all its pins exposed on a header (J1) for use as a development board. The microcontroller has a pull-up (R4) for the ~RESET pin. It also uses only one pin to control the addressable LED (D1), while another unconnected pin is used for analog readings and to serve as a seed for random numbers. The addressable LED, centered on the board, has a decoupling capacitor (C3) to stabilize its operation, given the high current requirements of this element.
+
+All discrete components have a 0603 footprint where possible, maintaining a small space but still being possible to manipulate them manually.
 
 The manufacturing files are located in the `out` folder:
 
